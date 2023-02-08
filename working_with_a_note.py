@@ -2,16 +2,33 @@ from tkinter import messagebox
 from tkinter.filedialog import asksaveasfile, askopenfile
 from tkinter import *
 
-form = Tk()
-form.title("Заметки")
-form.geometry("500x500")
+root = Tk()
+root.title("Заметки")
+root.geometry("500x500")
+root.iconbitmap('Wordpad.ico')
 
-menu_bar = Menu(form)
+menu_bar = Menu(root)
 file_menu = Menu(menu_bar)
 menu_bar.add_cascade(label="Файл", menu=file_menu)
 
-text = Text(form, width=500, height=500)
+text = Text(root,
+            width=500,
+            height=500,
+            bg='black',  # темная тема окна
+            fg='lime',   # цвет текста лайм
+            padx=10,    # добавление отступов по краям
+            pady=10,
+            wrap=WORD,   # правильный перенос по словам
+            insertbackground='brown', # добавление курсора
+            selectbackground='#8D917A', # изменение цвета выделения текста
+            spacing3=10 # добавила абзацы
 
+            )
+
+# добавляю скролл бар
+scroll = Scrollbar(root, command=text.yview)
+scroll.pack(side=RIGHT, fill=Y)
+text.config(yscrollcommand=scroll.set)
 file_name = NONE
 
 def new_file():
