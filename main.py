@@ -20,10 +20,10 @@ def save_file():
 
 def open_file():
     file_path = filedialog.askopenfilename(title='Выбор файла',
-                                           filetypes=(('Текстовые документы (*.txt)', '*.txt'), ('Все файлы', '*.*')))
+                                           filetypes=(('Текстовые документы (*.json)', '*.json'), ('Все файлы', '*.*')))
     if file_path:
         text.delete('1.0', END)
-        text.insert('1.0', open(file_path, encoding='utf-8').read())
+        text.insert('1.0', open(file_path).read())
 
 
 def chenge_theme(theme):
